@@ -3,6 +3,7 @@ package com.example.sample;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -15,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     TextView cusChkTxt;
     AlertDialog.Builder builder;
     Spinner sp;
+    AutoCompleteTextView actv;
 
     //Local Variable Declaration
     boolean IsClicked=true;
@@ -62,6 +65,14 @@ public class MainActivity extends AppCompatActivity
         cusChkTxt=(TextView) findViewById(R.id.cusChkBoxStatusTxt);
         alertButton=(Button) findViewById(R.id.alertBtn);
         sp=(Spinner)findViewById(R.id.spinnerList);
+
+        //AutoCompleteTextView Code --> START
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_item,movies);
+        actv =  (AutoCompleteTextView)findViewById(R.id.actView);
+        actv.setThreshold(2);//search will be starts from 2nd character
+        actv.setAdapter(adapter);
+        actv.setTextColor(R.color.purple_700);
+        //AutoCompleteTextView Code --> START
 
         ArrayAdapter aa=new ArrayAdapter(this, android.R.layout.simple_spinner_item,movies);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
