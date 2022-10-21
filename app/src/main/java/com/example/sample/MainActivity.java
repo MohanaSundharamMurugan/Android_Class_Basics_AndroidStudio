@@ -32,7 +32,7 @@ import java.time.Duration;
 public class MainActivity extends AppCompatActivity
 {
     //Widget Variable Declaration
-    Button toast,customToast,alertButton;
+    Button toast,customToast,alertButton,lViewBtn,gViewBtn;
     Switch swit;
     ToggleButton tglButton;
     CheckBox cBox;
@@ -65,6 +65,24 @@ public class MainActivity extends AppCompatActivity
         cusChkTxt=(TextView) findViewById(R.id.cusChkBoxStatusTxt);
         alertButton=(Button) findViewById(R.id.alertBtn);
         sp=(Spinner)findViewById(R.id.spinnerList);
+        lViewBtn=(Button)findViewById(R.id.listViewBtn);
+        gViewBtn=(Button)findViewById(R.id.gridViewBtn);
+
+        lViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1=new Intent(MainActivity.this,ListViewActivity.class);
+                startActivity(i1);
+            }
+        });
+
+        gViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i1=new Intent(MainActivity.this,GridViewActivity.class);
+                startActivity(i1);
+            }
+        });
 
         //AutoCompleteTextView Code --> START
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_item,movies);
