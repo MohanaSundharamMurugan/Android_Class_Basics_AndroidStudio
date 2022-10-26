@@ -3,6 +3,7 @@ package com.example.sample;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
@@ -79,8 +80,8 @@ public class MainActivity extends AppCompatActivity
         gViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i1=new Intent(MainActivity.this,GridViewActivity.class);
-                startActivity(i1);
+                Intent i2=new Intent(MainActivity.this,GridViewActivity.class);
+                startActivity(i2);
             }
         });
 
@@ -90,8 +91,9 @@ public class MainActivity extends AppCompatActivity
         actv.setThreshold(2);//search will be starts from 2nd character
         actv.setAdapter(adapter);
         actv.setTextColor(R.color.purple_700);
-        //AutoCompleteTextView Code --> START
+        //AutoCompleteTextView Code --> END
 
+        //Spinner Code --> START
         ArrayAdapter aa=new ArrayAdapter(this, android.R.layout.simple_spinner_item,movies);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(aa);
@@ -107,16 +109,19 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
-        
+        //Spinner Code --> END
+
+        //AlertDialog Code --> START
         builder = new AlertDialog.Builder(this);
         alertButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                builder.setMessage("Message") .setTitle("You have meeting at 02:00 PM");
+                //builder.setMessage("Message") .setTitle("You have meeting at 02:00 PM");
                 builder.setMessage("Do you want to Exit?").setCancelable(false)
-                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener()
+                        {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 finishAffinity();
@@ -134,6 +139,7 @@ public class MainActivity extends AppCompatActivity
                 alert.show();
             }
         });
+        //AlertDialog Code --> END
 
         linearLay.setOnClickListener(new View.OnClickListener() {
             @Override
